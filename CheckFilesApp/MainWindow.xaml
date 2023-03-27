@@ -13,15 +13,42 @@
         </Grid.ColumnDefinitions>
 
 
-        <DockPanel Grid.Column="0"
-                   Margin="15">
+        <DockPanel Grid.Column="0" Margin="15">
             <DockPanel Height="25"
                        DockPanel.Dock="Top">
-            <Label Content="Путь к директории"
-                DockPanel.Dock="Left"></Label>
+                <Label Content="Путь к директории"
+                    DockPanel.Dock="Left"/>
                 <Button Content="Выбрать"
                     DockPanel.Dock="Right"/>
                 <TextBox></TextBox>
+            </DockPanel>
+
+            <Button Content="Начать сканирование"
+                    DockPanel.Dock="Top"
+                    Margin="0 15 0 0"/>
+
+            <ProgressBar DockPanel.Dock="Top"
+                         Height="25"
+                         Margin="0 15 0 0"></ProgressBar>
+
+         <Grid/>
         </DockPanel>
+
+        <DockPanel Grid.Column="1" Margin="15">
+            <Label Content="_Список запрещенных слов"
+                DockPanel.Dock="Top"/>            
+
+             <Button Content="Сохранить"
+                DockPanel.Dock="Bottom"/>
+
+            <TextBox></TextBox>
+        </DockPanel>
+
+
+
+
+
+
+
     </Grid>
 </Window>
