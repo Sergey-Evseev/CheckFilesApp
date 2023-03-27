@@ -19,7 +19,9 @@
                 <Label Content="Путь к директории"
                     DockPanel.Dock="Left"/>
                 <Button Content="Выбрать"
-                    DockPanel.Dock="Right"/>
+                    DockPanel.Dock="Right"
+                        x:Name="SelectDirectory"
+                        Click="SelectDirectory_Click"/>
                 <TextBox></TextBox>
             </DockPanel>
 
@@ -43,12 +45,5 @@
 
             <TextBox></TextBox>
         </DockPanel>
-
-
-
-
-
-
-
     </Grid>
 </Window>
