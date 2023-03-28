@@ -14,6 +14,8 @@ namespace CheckFilesApp
 {
     internal class MainWindowViewModel : INPC
     {
+        const string FORB_FILE = "ForbiddenWords.txt";
+        
         //Выбранная директория
         private string _selectedDirectory;
 
@@ -34,15 +36,38 @@ namespace CheckFilesApp
             get { return _forbiddenWords;}
         }
 
-        //метод который загружает список запрещенных слов
-        public bool LoadForbiddenWords(string path="")
+        //прогресс чтения и перезаписи слов
+        private int _progress = 0;
+        public int Progress
+        {
+            get { return _progress; }
+        }
+
+        //метод который загружает запрещенные слова из файла
+        public bool LoadForbiddenWords()
         {
             //TODO: Добавить проверку файла
-            _forbiddenWords = File.ReadLines(path).ToList();
+            _forbiddenWords = File.ReadLines(FORB_FILE).ToList();
             OnPropertyChanged(nameof(ForbiddenWords));
             return true;
         }
-        //метод сканирования директории
+        //сохранение запрещенных слов в файл (перезапись в файл)
+        public bool SaveForbiddenWords()
+        {
+            try
+            {                
+                File.WriteAllLines(FORB_FILE, _forbiddenWords);
+                return true;
+            }
+            catch (Exception ex)
+            {                
+                Console.WriteLine($"Error saving forbidden words: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        //метод сканирования директории - найти все текстовые файлы
         public bool ScanDirectory()
         {
             List<string> files = //просканировать директорию, привести список файлов к строке и присвоить списку
