@@ -45,7 +45,7 @@ namespace CheckFilesApp
         //метод сканирования директории
         public bool ScanDirectory()
         {
-            List<string> files = 
+            List<string> files = //просканировать директорию, привести список файлов к строке и присвоить списку
             Directory.GetFiles(_selectedDirectory, "*.txt", SearchOption.AllDirectories).ToList();
             return true;
         }
