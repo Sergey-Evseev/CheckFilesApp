@@ -94,8 +94,14 @@ namespace CheckFilesApp
             }
         }
 
-        //заменить все запрещенные слова в найденных файлах на звездочки
+        //заменить все запрещенные слова в скопированных файлах на звездочки
+        public async Task ReplaceTextFiles()
+        {
+            var copyPath = Path.Combine(Environment.GetFolderPath(Environment. //получаем адрес директории
+                SpecialFolder.MyDocuments), COPY_DIRECT_NAME); //где хранятся скопированные файлы
+            List<string> files = Directory.GetFiles(copyPath).ToList(); //получаем список файлов
 
+        }
 
     }
 }
