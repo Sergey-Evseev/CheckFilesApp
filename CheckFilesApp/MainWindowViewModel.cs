@@ -75,22 +75,27 @@ namespace CheckFilesApp
             {
                 using (StreamReader stream = new StreamReader(file))
                 {
-                    string line;
-                    while ( (line = await stream.ReadLineAsync()) != null)
+                    while (!stream.EndOfStream)
                     {
-                        bool find = false;
+                        string line = await stream.ReadLineAsync();
                         foreach (var word in ForbiddenWords) //ObservableCollection
-                          if (line.ToLower().Contains(word.ToLower()))
-                          {
-                                find = true;
-                                var fi = new FileInfo(file); //получаем информацию о файле для имени файла
-                                File.Copy(file, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                                    + $"\\{COPY_DIRECT_NAME}\\{fi.Name}_forbidden");
-                                break; 
-                          }
+                        {
+                            if (line.ToLower().Contains(word.ToLower()))
+                            {
+                                var fi = new FileInfo(file);
+                                var copyPath = Path.Combine(Environment.GetFolderPath(Environment.
+                                    SpecialFolder.MyDocuments), COPY_DIRECT_NAME, $"{fi.Name}_forbidden");
+                                File.Copy(file, copyPath);
+                                break;
+                            }
+                        }
                     }
                 }
             }
         }
+
+        //заменить все запрещенные слова в найденных файлах на звездочки
+
+
     }
 }
