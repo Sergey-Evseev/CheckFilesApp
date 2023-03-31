@@ -8,7 +8,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-
+using System.Text.RegularExpressions;
 
 namespace CheckFilesApp
 {
@@ -99,8 +99,26 @@ namespace CheckFilesApp
         {
             var copyPath = Path.Combine(Environment.GetFolderPath(Environment. //получаем адрес директории
                 SpecialFolder.MyDocuments), COPY_DIRECT_NAME); //где хранятся скопированные файлы
+            
             List<string> files = Directory.GetFiles(copyPath).ToList(); //получаем список файлов
-
+            foreach (var file in files)
+            {
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    string line;
+                    while ((line = await sr.ReadLineAsync()) != null)
+                    {
+                        foreach (var word in ForbiddenWords)
+                            if (line.ToLower().Contains(word.ToLower()))
+                            {
+                                //string asterisks = new string('*', word.Length);
+                                //line = line.Replace(word, asterisks);
+                                Regex.Replace(line, word, new string('*', word.Length), 
+                                    RegexOptions.IgnoreCase);
+                            }
+                    }
+                }
+            }
         }
 
     }
