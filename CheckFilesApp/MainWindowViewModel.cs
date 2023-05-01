@@ -43,8 +43,11 @@ namespace CheckFilesApp
         //метод который загружает запрещенные слова из файла
         public bool LoadForbiddenWords()
         {
-        //TODO: Добавить проверку файла
-        ForbiddenWords = new ObservableCollection<string>(File.ReadLines(FORB_FILE).ToList());
+            //TODO: Добавить проверку файла
+            //Method uses the File.ReadLines method to read all the lines from a file located at the path
+            //specified by the FORB_FILE constant, converts the result to a list and adds all the lines
+            //to the ForbiddenWords collection.
+            ForbiddenWords = new ObservableCollection<string>(File.ReadLines(FORB_FILE).ToList());
             OnPropertyChanged(nameof(ForbiddenWords));
             return true;
         }

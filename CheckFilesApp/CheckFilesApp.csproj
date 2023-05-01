@@ -99,5 +99,8 @@
   <ItemGroup>
     <Resource Include="ForbiddenWord.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Task.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
