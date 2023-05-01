@@ -9,6 +9,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using System.Dynamic;
+using System.Xml.Linq;
 
 namespace CheckFilesApp
 {
@@ -48,12 +50,16 @@ namespace CheckFilesApp
             //specified by the FORB_FILE constant, converts the result to a list and adds all the lines
             //to the ForbiddenWords collection.
             ForbiddenWords = new ObservableCollection<string>(File.ReadLines(FORB_FILE).ToList());
-            OnPropertyChanged(nameof(ForbiddenWords));
+            //calling the OnPropertyChanged method and passing the name of a property as an argument
+            //nameof is used with a property, it returns the name of the property as a string.
+            //The string is then passed as an argument to the OnPropertyChanged method, which raises
+            //the PropertyChanged event with the name of the property.
+        OnPropertyChanged(nameof(ForbiddenWords));
             return true;
         }
-        //сохранение запрещенных слов в файл (перезапись в файл)
+    //сохранение запрещенных слов в файл (перезапись в файл)
         public bool SaveForbiddenWords()
-        {
+    {
             try
             {                
                 File.WriteAllLines(FORB_FILE, ForbiddenWords);
