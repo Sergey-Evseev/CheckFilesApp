@@ -97,7 +97,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ForbiddenWord.txt" />
+    <Resource Include="ForbiddenWords.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Task.png" />

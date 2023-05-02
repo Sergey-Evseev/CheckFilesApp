@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Dynamic;
 using System.Xml.Linq;
+using System.Windows.Shapes;
+using Path = System.IO.Path; 
 
 namespace CheckFilesApp
 {
@@ -54,12 +56,12 @@ namespace CheckFilesApp
             //nameof is used with a property, it returns the name of the property as a string.
             //The string is then passed as an argument to the OnPropertyChanged method, which raises
             //the PropertyChanged event with the name of the property.
-        OnPropertyChanged(nameof(ForbiddenWords));
+            OnPropertyChanged(nameof(ForbiddenWords));
             return true;
         }
-    //сохранение запрещенных слов в файл (перезапись в файл)
+        //сохранение запрещенных слов в файл (перезапись в файл)
         public bool SaveForbiddenWords()
-    {
+        {
             try
             {                
                 File.WriteAllLines(FORB_FILE, ForbiddenWords);
@@ -77,7 +79,8 @@ namespace CheckFilesApp
         public async Task ScanDirectory()
         {
             ////просканировать директорию, привести список файлов к строке и сделать список файлов
-            List<string> files = Directory.GetFiles(_selectedDirectory, "*.txt", SearchOption.AllDirectories).ToList();
+            List<string> files = Directory.GetFiles(_selectedDirectory, "*.txt", 
+                SearchOption.AllDirectories).ToList();
             
             //чтение каждого файла из списка
             foreach (var file in files)
@@ -92,6 +95,9 @@ namespace CheckFilesApp
                             if (line.ToLower().Contains(word.ToLower()))
                             {
                                 var fi = new FileInfo(file);
+                                //copyPath contains the path of a file going to be copied to a new location.
+                                //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                                //returns the path to the "My Documents" folder of the current user's profile
                                 var copyPath = Path.Combine(Environment.GetFolderPath(Environment.
                                     SpecialFolder.MyDocuments), COPY_DIRECT_NAME, $"{fi.Name}_forbidden");
                                 File.Copy(file, copyPath);
@@ -101,7 +107,7 @@ namespace CheckFilesApp
                     }
                 }
             }
-        }
+        }//end of public async Task ScanDirectory()
 
         //заменить все запрещенные слова в скопированных файлах на звездочки
         public async Task ReplaceTextFiles()
@@ -110,6 +116,7 @@ namespace CheckFilesApp
                 SpecialFolder.MyDocuments), COPY_DIRECT_NAME); //где хранятся скопированные файлы
             
             List<string> files = Directory.GetFiles(copyPath).ToList(); //получаем список файлов
+
             foreach (var file in files)
             {
                 using (StreamReader sr = new StreamReader(file))
@@ -122,6 +129,9 @@ namespace CheckFilesApp
                             {
                                 //string asterisks = new string('*', word.Length);
                                 //line = line.Replace(word, asterisks);
+
+                                //"new string('*', word.Length)"-creates a new string consisting of a sequence
+                                //of asterisks (*) of the same length as the original word.
                                 Regex.Replace(line, word, new string('*', word.Length), 
                                     RegexOptions.IgnoreCase);
                             }
@@ -130,5 +140,5 @@ namespace CheckFilesApp
             }
         }
 
-    }
-}
+    }//end of internal class MainWindowViewModel : INPC
+}//end of namespace CheckFilesApp
