@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.IO;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -87,13 +86,15 @@ namespace CheckFilesApp
             {
                 using (StreamReader stream = new StreamReader(file))
                 {
-                    while (!stream.EndOfStream)
-                    {
-                        string line = await stream.ReadLineAsync();
+                    string line;
+                    bool find = false;
+                    while ((line = await stream.ReadLineAsync()) != null && !find)
+                    {                        
                         foreach (var word in ForbiddenWords) //ObservableCollection
                         {
                             if (line.ToLower().Contains(word.ToLower()))
                             {
+                                find = true;
                                 var fi = new FileInfo(file);
                                 //copyPath contains the path of a file going to be copied to a new location.
                                 //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
@@ -124,16 +125,19 @@ namespace CheckFilesApp
                     string line;
                     while ((line = await sr.ReadLineAsync()) != null)
                     {
-                        foreach (var word in ForbiddenWords)
+                          foreach (var word in ForbiddenWords)
                             if (line.ToLower().Contains(word.ToLower()))
                             {
-                                //string asterisks = new string('*', word.Length);
-                                //line = line.Replace(word, asterisks);
-
                                 //"new string('*', word.Length)"-creates a new string consisting of a sequence
                                 //of asterisks (*) of the same length as the original word.
-                                Regex.Replace(line, word, new string('*', word.Length), 
+                                var replacedLine = Regex.Replace(line, word, new string('*', word.Length), 
                                     RegexOptions.IgnoreCase);
+                                //StreamWriter is constructed using this same underlying stream,
+                                //which means that it will write to the same file as the StreamReader.
+                                using (StreamWriter sw = new StreamWriter(sr.BaseStream))
+                                {
+                                    sw.WriteLine(replacedLine);
+                                }
                             }
                     }
                 }
