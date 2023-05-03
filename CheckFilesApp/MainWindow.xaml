@@ -21,7 +21,7 @@
                 <Button Content="Выбрать"
                     DockPanel.Dock="Right"
                         x:Name="SelectDirectory"
-                        Click="SelectDirectory_Click"/>
+                        Click="SelectDirectory_Click" Width="52"/>
                 <TextBox></TextBox>
             </DockPanel>
 

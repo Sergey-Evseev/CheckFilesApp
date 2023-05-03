@@ -24,5 +24,10 @@ namespace CheckFilesApp
         {
             InitializeComponent();
         }
+
+        private void SelectDirectory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
