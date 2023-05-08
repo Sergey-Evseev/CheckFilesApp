@@ -17,7 +17,7 @@ namespace CheckFilesApp
 {
     internal class MainWindowViewModel : INPC
     {
-        const string FORB_FILE = "ForbiddenWords.txt";//константа с именем файла с запрещ. словами
+        const string FORB_FILE = "C:\\Users\\1\\source\\repos\\CheckFilesApp\\CheckFilesApp\\ForbiddenWords.txt";//константа с именем файла с запрещ. словами
         const string COPY_DIRECT_NAME = "Forbidden Files";//дир.для сохр. найденных файлов с запрещ. словами
         
         public MainWindowViewModel()
