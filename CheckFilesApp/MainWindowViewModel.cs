@@ -20,6 +20,11 @@ namespace CheckFilesApp
         const string FORB_FILE = "ForbiddenWords.txt";//константа с именем файла с запрещ. словами
         const string COPY_DIRECT_NAME = "Forbidden Files";//дир.для сохр. найденных файлов с запрещ. словами
         
+        public MainWindowViewModel()
+        {
+            LoadForbiddenWords();
+        }
+        
         //Выбранная директория
         private string _selectedDirectory;
 

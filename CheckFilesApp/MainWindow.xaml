@@ -24,8 +24,9 @@
                         Click="SelectDirectory_Click" Width="52"/>
                 <!--Text property will be updated with 
                 the value of SelectedDirectory: -->
-                    <TextBox Text="{Binding Path=SelectedDirectory}">                    
-                </TextBox> 
+                <TextBox Text="{Binding Path=SelectedDirectory,
+                    UpdateSourceTrigger=PropertyChanged}"                    
+                IsReadOnly="True"></TextBox> 
             </DockPanel>
 
             <Button Content="Начать сканирование"
@@ -45,8 +46,8 @@
 
              <Button Content="Сохранить"
                 DockPanel.Dock="Bottom"/>
-
-            <TextBox></TextBox>
+            <ListView ItemsSource=
+              "{Binding Path=ForbiddenWords}"></ListView>            
         </DockPanel>
     </Grid>
 </Window>
