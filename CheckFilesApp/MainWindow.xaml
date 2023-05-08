@@ -31,7 +31,9 @@
 
             <Button Content="Начать сканирование"
                     DockPanel.Dock="Top"
-                    Margin="0 15 0 0"/>
+                    Margin="0 15 0 0"                    
+                    x:Name="ScanButton"
+                    Click="ScanButton_Click"/>
 
             <ProgressBar DockPanel.Dock="Top"
                          Height="25"
