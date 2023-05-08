@@ -22,7 +22,10 @@
                     DockPanel.Dock="Right"
                         x:Name="SelectDirectory"
                         Click="SelectDirectory_Click" Width="52"/>
-                <TextBox Text="{Binding Path=SelectedDirectory}"></TextBox>
+                <!--Text property will be updated with 
+                the value of SelectedDirectory: -->
+                    <TextBox Text="{Binding Path=SelectedDirectory}">                    
+                </TextBox> 
             </DockPanel>
 
             <Button Content="Начать сканирование"
