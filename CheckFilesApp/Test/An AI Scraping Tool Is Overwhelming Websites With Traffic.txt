@@ -1,0 +1,38 @@
+An AI Scraping Tool Is Overwhelming Websites With Traffic
+
+The creator of a tool that scrapes the internet for images in order to power artificial intelligence image generators like Stable Diffusion is telling website owners who want him to stop that they have to actively opt out, and that it’s “sad” that they are fighting the inevitable rise of AI.
+
+“It is sad that several of you are not understanding the potential of AI and open AI and as a consequence have decided to fight it,” Romain Beaumont, the creator of the image scraping tool img2dataset, said on its GitHub page. “You will have many opportunities in the years to come to benefit from AI. I hope you see that sooner rather than later. As creators you have even more opportunities to benefit from it.” 
+Img2dataset is a free tool Beaumont shared on GitHub which allows users to automatically download, and resize a list of URLs. The result is an image dataset, the kind that trains image-generating AI models like Open AI’s DALL-E, the open source Stable Diffusion model, and Google’s Imagen. Beaumont is also an open source contributor to LAION-5B, one of the largest image datasets in the world that contains more than 5 billion images and is used by Imagen and Stable Diffusion.
+
+Img2dataset will attempt to scrape images from any site unless site owners add https headers like “X-Robots-Tag: noai,” and “X-Robots-Tag: noindex.” That means that the onus is on site owners, many of whom probably don’t even know img2dataset exists, to opt out of img2dataset rather than opt in.
+
+On Sunday, Terence Eden posted a comment on the Github page, saying that the tool “hammered” several of his sites and requesting that it be made opt-in. 
+
+“I don't understand why the onus is on me to add a new header to my sites opting out of this tool,” Eden said. “Please can you change the default behaviour so that it will only work on sites which set the X-Robots-Tag: YesAI?”
+
+“If you don't wish for people to view images from your website, the best way is to turn it off,” Beaumont replied. Beaumont did not respond to a request for comment.
+
+When Eden and other Github commenters pushed back, Beaumont said it would be “unethical” to make img2dataset opt-in rather than opt-out.
+“Letting a small minority prevent the large majority from sharing their images and from having the benefit of last gen AI tool would definitely be unethical yes,” he said on Github. “Consent is obviously not unethical. You can give your consent for anything if you wish. It seems you're trying to decide for million [sic] of other people without asking them for their consent.”
+
+Eden told Motherboard in an email that he noticed img2dataset was scraping his site, OpenBenches, which invites users to upload pictures and locations of memorial benches from across the world. Currently, OpenBenches has mapped 27,629 benches, and hosts 250GB of photos.
+
+“I noticed because I received an alert from my host that the site was under a sustained attack,” Eden said. “I had to pay to scale up my server, pay extra for export traffic, and spent part of my weekend blocking the abuse caused by this specific bot.”
+
+Beaumont also defended img2dataset by comparing it to the way Google indexes all websites online in order to power its search engine, which benefits anyone who wants to search the internet.
+
+“I directly benefit from search engines as they drive useful traffic to me,” Eden told Motherboard. “But, more importantly, Google's bot is respectful and doesn't hammer my site. And most bots respect the robots.txt directive. Romain's tool doesn't. It seems to be deliberately set up to ignore the directives website owners have in place. And, frankly, it doesn't bring any direct benefit to me.” A “robots.txt” file tells search engine crawlers like Google which part of a site the crawler can access in order to prevent it from overloading the site with requests. 
+The recent popularity of AI tools raises questions about consent and ownership that are as old as the internet. Google’s Featured Snippets extracted the most valuable content out of some sites, making them practically obsolete. Facebook maximized engagement in its News Feed with news stories, then cornered the majority of ad dollars, squeezing media companies (some countries like Australia now demand Facebook pay media companies for this practice).
+
+Tools like ChatGPT and Stable Diffusion similarly only work because they have already scraped vast swaths of the internet: articles, forums posts, art, photographs etc. that users shared online with friends or fans without ever even being given the chance to opt out. Much of this data predates the existence of Open AI, Stability AI, or the LAION dataset. 
+
+The people at the head of the new crop of AI companies believe that their technology could replace 80 percent of  jobs in the U.S. and pose “massive risks” to society. We should be skeptical of these claims, but it’s also worth noting that the people building tools they consider to be so disruptive are doing so without ever asking the internet users whose efforts are powering AI if they wish to fuel that technology. 
+Big companies watching how AI is trending are not stupid. Executives see the potential for new revenue in AI and they want a cut. Last week, Reddit said that it’s changing its API so Google, OpenAI, and other companies can no longer scrape it for free. A few days later, Stack Overflow, which ChatGPT could one day largely replace as a resource for programers, did the same. Elon Musk has threatened to sue Open AI for scraping Twitter for data. 
+
+It’s a simple logic: why should these companies sit idly by as a new generation of technology stripmine them for data in order to build tools that could compete with them later? Why should these companies provide that data for free?
+
+Individual internet users like Eden have been asking the same questions the entire time that AI has slowly ascended. They just don’t have an easy way to fight back.
+
+“Thousands of tools are released every day,” Eden said. “Am I expected to play Whac-a-Mole and shut down every new one that appears? That is a perverse way to expect people to behave. These bots cost people time and money without offering any tangible benefit… Consent is the bedrock of ethics. Datasets built on non-consensually obtained data present a clear risk to owners and users of that model.”
+

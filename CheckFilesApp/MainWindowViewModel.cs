@@ -80,13 +80,17 @@ namespace CheckFilesApp
 
 
         //метод сканирования директории - найти все текстовые файлы в директории 
-        public async Task ScanDirectory()
+        public async Task ScanDirectory(IProgress<int> progress)
         {
             ////просканировать директорию, привести список файлов к строке и сделать список файлов
             List<string> files = Directory.GetFiles(_selectedDirectory, "*.txt", 
                 SearchOption.AllDirectories).ToList();
+
+            int totalFiles = files.Count;
+            int processedFiles = 0;
             
             //чтение каждого файла из списка
+            
             foreach (var file in files)
             {
                 using (StreamReader stream = new StreamReader(file))
@@ -106,7 +110,10 @@ namespace CheckFilesApp
                                 //returns the path to the "My Documents" folder of the current user's profile
                                 var copyPath = Path.Combine(Environment.GetFolderPath(Environment.
                                     SpecialFolder.MyDocuments), COPY_DIRECT_NAME, $"{fi.Name}_forbidden");
-                                File.Copy(file, copyPath);
+                                //Task.Run method schedules the File.Copy method to run on a thread from
+                                //the thread pool. This ensures that the copy operation is complete before
+                                //moving on to the next file in the directory
+                                await Task.Run(() => File.Copy(file, copyPath));
                                 break;
                             }
                         }

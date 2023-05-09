@@ -1,0 +1,36 @@
+A single 360 solution that does it all
+
+SAP simplifies how projects with external services providers are initiated, engaged, managed, and completed.
+
+Initiate service requests with a competitive bidding process that allows you to collaborate on bid criteria with colleagues, expedite approvals for authorized terms and budgets, and then distribute the request for services providers to respond.
+ 
+Create service request: Produce service orders and statements of work from pre-populated templates.
+ 
+Collaborate and approve: Communicate easily with internal stakeholders to nail down the details of the request before sending it to vendors.
+ 
+Distribute service request: Send requests to a selected vendor or use robust bidding tools to solicit responses from a list of preferred vendors.
+
+Engage your selected vendor through the negotiation process following a side-by-side evaluation of all responses. Then finalize your agreement.
+ 
+Receive responses: Evaluate responses sent by vendors.
+ 
+Evaluate and select response: Compare key information like cost, duration, location, and number and type of workers for each vendor, side-by-side.
+ 
+Negotiate and finalize agreement: Conduct back-and-forth vendor negotiation using built-in communication tools to reach final agreement.
+
+Manage all global services engagements within a single, centralized system; securely onboard workers, track deliverables, validate work, and generate invoices.
+ 
+Onboard workers: Automatically kick off onboarding tasks like assigning Security IDs and providing access to systems. Prevent workers who are flagged as ‘do not re-hire’ from being onboarded.
+ 
+Track timesheets and milestones: Approve timesheets, expenses, milestones, and deliverables on a recurring, due date, or price per unit basis.
+ 
+Validate and approve work: Ensure services were performed as expected either from a desktop or remotely with an SAP Fieldglass mobile application.
+ 
+Track invoices and payments: Generate invoice details, approve time worked, and view remittance details.
+
+Complete the workflow with automated offboarding, such as terminating system access and retrieving assets, and give performance feedback on the service provided.
+ 
+Offboard workers: Minimize security risks with prompt, automated termination of access to systems and retrieval of assets like laptops.
+ 
+Close and evaluate service: Give performance feedback to vendors on the workers and the services they provided.
+
