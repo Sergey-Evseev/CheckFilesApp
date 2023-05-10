@@ -86,7 +86,9 @@ namespace CheckFilesApp
             List<string> files = Directory.GetFiles(_selectedDirectory, "*.txt", 
                 SearchOption.AllDirectories).ToList();
 
+            //holds the total number of files in the directory
             int totalFiles = files.Count;
+            //keeps track of the number of files processed so far
             int processedFiles = 0;
             
             //чтение каждого файла из списка
@@ -115,12 +117,17 @@ namespace CheckFilesApp
                                 //moving on to the next file in the directory
                                 await Task.Run(() => File.Copy(file, copyPath));
                                 break;
-                            }
+                            }                            
                         }
                     }
+                    processedFiles++;
+                    int percentage = (int) (processedFiles / (double) totalFiles * 100);
+                    progress.Report(percentage);
                 }
             }
         }//end of public async Task ScanDirectory()
+
+        
 
         //заменить все запрещенные слова в скопированных файлах на звездочки
         public async Task ReplaceTextFiles()

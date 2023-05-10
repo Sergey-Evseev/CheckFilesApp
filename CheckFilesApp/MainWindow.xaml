@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CheckFilesApp"
+        xmlns:local="clr-namespace:CheckFilesApp" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -37,9 +37,13 @@
 
             <ProgressBar DockPanel.Dock="Top"
                          Height="25"
-                         Margin="0 15 0 0"></ProgressBar>
+                         Margin="0 15 0 0"
+                         Minimum="0" Maximum="100"
+                         x:Name="ProgressBar"
+                         Value="{Binding Progress, Mode=OneWay}"                       
+                         />
 
-         <Grid/>
+                <Grid/>
         </DockPanel>
 
         <DockPanel Grid.Column="1" Margin="15">

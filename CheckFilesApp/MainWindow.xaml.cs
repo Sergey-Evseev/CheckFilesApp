@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using System.Xml.Linq;
+using System.Diagnostics;
+
 
 namespace CheckFilesApp
 {
@@ -56,9 +57,16 @@ namespace CheckFilesApp
             }
         }
 
-        private void ScanButton_Click(object sender, RoutedEventArgs e)
+        //Output of progress of files scanning
+        private async Task OnScanDirectory(IProgress<int> progress)
         {
-            _viewModel.ScanDirectory().Wait();
+            await _viewModel.ScanDirectory(progress);
+        }
+        //event handler for Start Scan button
+        private async void ScanButton_Click(object sender, RoutedEventArgs e)
+        {
+            var progress = new Progress<int>(value => ProgressBar.Value = value);
+            await OnScanDirectory(progress);            
         }
     }
 }
